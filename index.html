@@ -28,24 +28,23 @@
     <!-- Appears when the image target is detected -->
     <a-entity mindar-image-target="targetIndex: 0">
 
-      <!-- RED GLOWING TEXT -->
+      <!-- DARK GREEN GLOWING TEXT -->
       <a-text
-        value="Specialized Training Program in Social Media Innovations with AI and AR\nNadeem SUHOOTOORAH\nRehad Suhootoorah\n06 May 2026 to 19 May 2026\nC-DAC Mohali"
+        value="Specialized Training Program\nSocial Media Innovations\nwith AI and AR\n\nNadeem SUHOOTOORAH\n\nRehad Suhootoorah\n\n06 May 2026 to 19 May 2026\n\nC-DAC Mohali"
         position="0 0.8 0"
         align="center"
-        color="#FF0000"
+        color="#006400"
         width="4"
-        material="color: #FF0000; emissive: #FF0000; emissiveIntensity: 3">
+        material="color: #006400; emissive: #006400; emissiveIntensity: 3">
       </a-text>
 
-      <!-- RED STAR SPARKLES -->
-      <!-- Uses point texture to ensure compatibility if star texture fails -->
+      <!-- DARK GREEN STAR SPARKLES -->
       <a-entity
         position="0 0 0"
         particle-system="
           preset: dust;
           particleCount: 500;
-          color: #FF0000, #FF4444, #FFAAAA;
+          color: #006400, #228B22, #32CD32;
           size: 0.02, 0.08;
           velocityValue: 0 0.10 0;
           velocitySpread: 0.50 0.50 0.50;
@@ -55,13 +54,13 @@
           blending: additive;">
       </a-entity>
 
-      <!-- RED GLOWING SPINNING TORUS -->
+      <!-- DARK GREEN GLOWING SPINNING TORUS -->
       <a-torus
         position="0 0 0"
         radius="0.4"
         radius-tubular="0.03"
-        material="color: #FF0000;
-                  emissive: #FF0000;
+        material="color: #006400;
+                  emissive: #006400;
                   emissiveIntensity: 3;
                   transparent: true;
                   opacity: 0.8"
@@ -71,14 +70,14 @@
                    dur: 2000">
       </a-torus>
 
-      <!-- RED PULSING OUTER RING -->
+      <!-- DARK GREEN PULSING OUTER RING -->
       <a-ring
         position="0 0 0"
         rotation="-90 0 0"
         radius-inner="0.48"
         radius-outer="0.52"
-        material="color: #FF0000;
-                  emissive: #FF0000;
+        material="color: #006400;
+                  emissive: #006400;
                   transparent: true;
                   opacity: 0.5"
         animation="property: scale;
