@@ -3,42 +3,95 @@
 <head>
   <meta charset="utf-8">
   <title>Image Target AR</title>
+
+  <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+  <!-- MindAR -->
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+
+  <!-- Particle System Component -->
+  <script src="https://cdn.jsdelivr.net/gh/IdeaSpaceVR/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js"></script>
 </head>
-<body style="margin:0;overflow:hidden">
+
+<body style="margin:0; overflow:hidden;">
   <a-scene
-    mindar-image="imageTargetSrc:./targets.mind"
+    mindar-image="imageTargetSrc: ./targets.mind"
     color-space="sRGB"
-    renderer="colorManagement:true,physicallyCorrectLights"
-    vr-mode-ui="enabled:false"
-    device-orientation-permission-ui="enabled:false">
+    renderer="colorManagement: true; physicallyCorrectLights: true"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
 
-    <a-assets></a-assets>
+    <!-- Camera -->
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-    <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
+    <!-- Appears when the image target is detected -->
+    <a-entity mindar-image-target="targetIndex: 0">
 
-    <!-- This entity appears when image is detected -->
-    <a-entity mindar-image-target="targetIndex:0">
-
-      <!-- Floating animated text over your target -->
+      <!-- RED GLOWING TEXT -->
       <a-text
-        value="MindSprout Technologies is live"
-        position="0 0.2 0"
-        scale="0.2 0.2 0.2"
-        color="#00E5FF"
+        value="TARGET LOCKED"
+        position="0 0.8 0"
         align="center"
-        animation="property:position;to:0 0.5 0;dir:alternate;loop:true;dur:1500">
+        color="#FF0000"
+        width="4"
+        material="color: #FF0000; emissive: #FF0000; emissiveIntensity: 3">
       </a-text>
 
-      <!-- Spinning torus ring around the target -->
+      <!-- RED STAR SPARKLES -->
+      <!-- Uses point texture to ensure compatibility if star texture fails -->
+      <a-entity
+        position="0 0 0"
+        particle-system="
+          preset: dust;
+          particleCount: 500;
+          color: #FF0000, #FF4444, #FFAAAA;
+          size: 0.02, 0.08;
+          velocityValue: 0 0.10 0;
+          velocitySpread: 0.50 0.50 0.50;
+          accelerationValue: 0 0.01 0;
+          opacity: 1, 0;
+          maxAge: 3;
+          blending: additive;">
+      </a-entity>
+
+      <!-- RED GLOWING SPINNING TORUS -->
       <a-torus
         position="0 0 0"
         radius="0.4"
         radius-tubular="0.03"
-        material="color:#6C63FF;emissive:#6C63FF;opacity:0.7"
-        animation="property:rotation;to:0 360 0;loop:true;dur:2000">
+        material="color: #FF0000;
+                  emissive: #FF0000;
+                  emissiveIntensity: 3;
+                  transparent: true;
+                  opacity: 0.8"
+        animation="property: rotation;
+                   to: 0 360 0;
+                   loop: true;
+                   dur: 2000">
       </a-torus>
+
+      <!-- RED PULSING OUTER RING -->
+      <a-ring
+        position="0 0 0"
+        rotation="-90 0 0"
+        radius-inner="0.48"
+        radius-outer="0.52"
+        material="color: #FF0000;
+                  emissive: #FF0000;
+                  transparent: true;
+                  opacity: 0.5"
+        animation="property: scale;
+                   from: 1 1 1;
+                   to: 1.3 1.3 1.3;
+                   dur: 1500;
+                   loop: true"
+        animation__fade="property: material.opacity;
+                         from: 0.6;
+                         to: 0;
+                         dur: 1500;
+                         loop: true">
+      </a-ring>
 
     </a-entity>
   </a-scene>
